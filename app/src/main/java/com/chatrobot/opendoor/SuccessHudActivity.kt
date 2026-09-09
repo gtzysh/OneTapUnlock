@@ -6,6 +6,7 @@ import android.os.Looper
 import android.view.WindowManager
 import androidx.appcompat.app.AppCompatActivity
 
+// 【开源声明】本文件以 MIT 许可证发布。Copyright (c) 2026 gaotongzhuang
 // 【桌面正中弹出和贝壳「开门中」同款的黑底条，不挡住桌面点击】
 class SuccessHudActivity : AppCompatActivity() {
     private val handler = Handler(Looper.getMainLooper())

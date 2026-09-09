@@ -2,6 +2,7 @@ package com.chatrobot.opendoor
 
 import android.content.Context
 
+// 【开源声明】本文件以 MIT 许可证发布。Copyright (c) 2026 gaotongzhuang
 // 【保存贝壳页面上的按钮文案，改版后可在设置里改，不必重装】
 class UnlockPrefs(context: Context) {
     private val sp = context.getSharedPreferences("unlock", Context.MODE_PRIVATE)

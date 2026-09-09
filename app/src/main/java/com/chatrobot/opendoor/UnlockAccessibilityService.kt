@@ -12,6 +12,7 @@ import android.os.VibratorManager
 import android.view.accessibility.AccessibilityEvent
 import android.widget.Toast
 
+// 【开源声明】本文件以 MIT 许可证发布。Copyright (c) 2026 gaotongzhuang
 // 【只处理贝壳找房；点中开门后回桌面并提示开门成功】
 class UnlockAccessibilityService : AccessibilityService() {
     private val handler = Handler(Looper.getMainLooper())

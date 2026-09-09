@@ -8,6 +8,7 @@ import android.os.Handler
 import android.os.Looper
 import android.view.accessibility.AccessibilityNodeInfo
 
+// 【开源声明】本文件以 MIT 许可证发布。Copyright (c) 2026 gaotongzhuang
 // 【文字点击 + 底栏点格；手势必须丢到主线程。导航禁止按屏幕比例乱点】
 object NodeClicker {
     private val mainHandler = Handler(Looper.getMainLooper())

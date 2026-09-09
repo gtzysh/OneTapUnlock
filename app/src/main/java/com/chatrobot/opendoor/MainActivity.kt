@@ -10,6 +10,7 @@ import androidx.core.content.ContextCompat
 import com.chatrobot.opendoor.databinding.ActivityGuideBinding
 import com.chatrobot.opendoor.databinding.ActivityMainBinding
 
+// 【开源声明】本文件以 MIT 许可证发布。Copyright (c) 2026 gaotongzhuang
 // 【桌面点图标 = 立刻开门；结果 Intent 只展示回传，不再连开一次】
 class MainActivity : AppCompatActivity() {
     private var bindRetries = 0

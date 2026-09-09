@@ -5,6 +5,7 @@ import android.os.Handler
 import android.os.Looper
 import android.view.accessibility.AccessibilityNodeInfo
 
+// 【开源声明】本文件以 MIT 许可证发布。Copyright (c) 2026 gaotongzhuang
 // 【按「当前页有没有下一入口」推进：首页→我的→租约→智能门锁→圆钮】
 class UnlockCoordinator(
     private val service: AccessibilityService,

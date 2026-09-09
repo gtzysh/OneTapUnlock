@@ -9,6 +9,7 @@ import android.provider.Settings
 import android.text.TextUtils
 import android.view.accessibility.AccessibilityManager
 
+// 【开源声明】本文件以 MIT 许可证发布。Copyright (c) 2026 gaotongzhuang
 object BeikePackages {
     const val BEIKE = "com.lianjia.beike"
 }
