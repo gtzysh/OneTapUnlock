@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">一键开门</string>
+    <string name="a11y_service_label">一键开门辅助</string>
+    <string name="a11y_service_description">仅用于自动点击贝壳找房里的蓝牙开门按钮，不会读取其它应用内容。</string>
+    <string name="settings_title">开门设置</string>
+    <string name="settings_short">设置</string>
+    <string name="status_running">正在开门</string>
+    <string name="status_running_detail">已打开贝壳找房，请把手机靠近门锁</string>
+    <string name="status_idle">随时可以开门</string>
+    <string name="status_idle_detail">回到桌面点本图标就会自动开门。长按图标可改按钮文字。</string>
+    <string name="status_connecting">正在连接辅助服务</string>
+    <string name="status_connecting_detail">第一次开启无障碍后请稍等片刻</string>
+    <string name="kicker_result">开门结果</string>
+    <string name="kicker_ready">一键开门</string>
+    <string name="retry">再开一次</string>
+    <string name="done">完成</string>
+    <string name="cancel">取消</string>
+    <string name="open_a11y">打开无障碍设置</string>
+    <string name="save">保存</string>
+    <string name="saved">已保存</string>
+    <string name="guide_title">先开一次权限</string>
+    <string name="guide_body">之后点桌面图标就会自动打开贝壳找房并点击蓝牙开门。请按顺序做完下面几步。</string>
+    <string name="guide_step1">打开无障碍，找到「一键开门辅助」并开启</string>
+    <string name="guide_step2">应用权限里允许「后台弹出界面」（开门后才能回到结果页）</string>
+    <string name="guide_step3">允许自启动、关联启动和后台活动</string>
+    <string name="guide_step4">耗电管理里关闭后台冻结 / 自动优化</string>
+    <string name="guide_step5">已安装并登录贝壳找房，且租约里能手动蓝牙开门</string>
+    <string name="err_no_beike">未安装贝壳找房，无法开门</string>
+    <string name="err_timeout">没点到开门按钮。请先关掉贝壳弹窗，或到设置里把按钮文字改成页面上的原字。</string>
+    <string name="ok_success">开门成功</string>
+    <string name="ok_success_detail">贝壳页面已出现成功提示，门锁应已打开，请推门。</string>
+    <string name="ok_clicked">已发出开门指令</string>
+    <string name="ok_clicked_detail">已点击蓝牙开门，但没有读到明确的成功或失败文字。请看门锁是否已开。</string>
+    <string name="fail_title">开门失败</string>
+    <string name="label_step1">第 1 步 · 我的</string>
+    <string name="label_step2">第 2 步 · 租约</string>
+    <string name="label_step3">第 3 步 · 智能门锁</string>
+    <string name="label_step4">第 4 步 · 开门按钮</string>
+    <string name="settings_hint">必须和贝壳页面上的按钮文字完全一致。App 改版后改这里即可，不用重装。</string>
+</resources>
