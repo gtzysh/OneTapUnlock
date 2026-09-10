@@ -23,10 +23,17 @@ class UnlockPrefs(context: Context) {
             .apply()
     }
 
+    fun iconId(): String = sp.getString(KEY_ICON, LauncherIcon.DEFAULT_ID) ?: LauncherIcon.DEFAULT_ID
+
+    fun saveIconId(id: String) {
+        sp.edit().putString(KEY_ICON, id).apply()
+    }
+
     companion object {
         private const val KEY1 = "step1"
         private const val KEY2 = "step2"
         private const val KEY3 = "step3"
         private const val KEY4 = "step4"
+        private const val KEY_ICON = "icon_id"
     }
 }

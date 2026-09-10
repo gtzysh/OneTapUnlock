@@ -12,8 +12,8 @@
     <application
         android:name=".OpenDoorApp"
         android:allowBackup="false"
-        android:icon="@mipmap/ic_launcher"
-        android:roundIcon="@mipmap/ic_launcher_round"
+        android:icon="@mipmap/ic_launcher_green_white"
+        android:roundIcon="@mipmap/ic_launcher_green_white_round"
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/Theme.OneTapUnlock">
@@ -22,7 +22,17 @@
             android:name=".MainActivity"
             android:exported="true"
             android:launchMode="singleTop"
-            android:theme="@style/Theme.OneTapUnlock">
+            android:theme="@style/Theme.OneTapUnlock" />
+
+        <!-- 【五套桌面图标，同一时间只启用一个 alias】 -->
+        <activity-alias
+            android:name=".LauncherGreenWhite"
+            android:enabled="true"
+            android:exported="true"
+            android:icon="@mipmap/ic_launcher_green_white"
+            android:label="@string/app_name"
+            android:roundIcon="@mipmap/ic_launcher_green_white_round"
+            android:targetActivity=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
@@ -30,7 +40,75 @@
             <meta-data
                 android:name="android.app.shortcuts"
                 android:resource="@xml/shortcuts" />
-        </activity>
+        </activity-alias>
+
+        <activity-alias
+            android:name=".LauncherDark"
+            android:enabled="false"
+            android:exported="true"
+            android:icon="@mipmap/ic_launcher"
+            android:label="@string/app_name"
+            android:roundIcon="@mipmap/ic_launcher_round"
+            android:targetActivity=".MainActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+            <meta-data
+                android:name="android.app.shortcuts"
+                android:resource="@xml/shortcuts" />
+        </activity-alias>
+
+        <activity-alias
+            android:name=".LauncherWhiteGreen"
+            android:enabled="false"
+            android:exported="true"
+            android:icon="@mipmap/ic_launcher_white_green"
+            android:label="@string/app_name"
+            android:roundIcon="@mipmap/ic_launcher_white_green_round"
+            android:targetActivity=".MainActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+            <meta-data
+                android:name="android.app.shortcuts"
+                android:resource="@xml/shortcuts" />
+        </activity-alias>
+
+        <activity-alias
+            android:name=".LauncherWhiteLine"
+            android:enabled="false"
+            android:exported="true"
+            android:icon="@mipmap/ic_launcher_white_line"
+            android:label="@string/app_name"
+            android:roundIcon="@mipmap/ic_launcher_white_line_round"
+            android:targetActivity=".MainActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+            <meta-data
+                android:name="android.app.shortcuts"
+                android:resource="@xml/shortcuts" />
+        </activity-alias>
+
+        <activity-alias
+            android:name=".LauncherWhiteMint"
+            android:enabled="false"
+            android:exported="true"
+            android:icon="@mipmap/ic_launcher_white_mint"
+            android:label="@string/app_name"
+            android:roundIcon="@mipmap/ic_launcher_white_mint_round"
+            android:targetActivity=".MainActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+            <meta-data
+                android:name="android.app.shortcuts"
+                android:resource="@xml/shortcuts" />
+        </activity-alias>
 
         <!-- 【开门成功时盖在桌面上的黑底提示条，不进最近任务】 -->
         <activity

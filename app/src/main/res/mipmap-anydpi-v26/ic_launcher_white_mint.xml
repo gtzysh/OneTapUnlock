@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<adaptive-icon xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- 【白底 + 薄荷绿锁】 -->
+    <background android:drawable="@color/ic_bg_white" />
+    <foreground android:drawable="@drawable/ic_fg_lock_mint" />
+</adaptive-icon>

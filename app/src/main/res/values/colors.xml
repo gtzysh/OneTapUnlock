@@ -13,4 +13,9 @@
     <color name="stroke">#3356E0A8</color>
     <color name="btn_text">#FF062018</color>
     <color name="ic_launcher_bg">#FF061410</color>
+    <color name="ic_bg_white">#FFFFFFFF</color>
+    <color name="ic_bg_green">#FF26C281</color>
+    <color name="ic_lock_green">#FF26C281</color>
+    <color name="ic_lock_mint">#FF3EE0A0</color>
+    <color name="ic_lock_line">#FF222222</color>
 </resources>

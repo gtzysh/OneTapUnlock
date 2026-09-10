@@ -1,7 +1,7 @@
 # open-source-packaging Specification
 
 ## Purpose
-TBD - created by archiving change mit-docs-and-license. Update Purpose after archive.
+MIT 开源声明，以及不含本机路径、可用 Gradle Wrapper 完成 Debug 打包的使用文档。
 ## Requirements
 ### Requirement: MIT 许可证文件
 仓库根目录 MUST 包含 MIT 许可证全文，版权行 MUST 为 `Copyright (c) 2026 gaotongzhuang`。

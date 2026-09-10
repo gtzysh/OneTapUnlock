@@ -8,7 +8,7 @@
     <string name="status_running">正在开门</string>
     <string name="status_running_detail">已打开贝壳找房，请把手机靠近门锁</string>
     <string name="status_idle">随时可以开门</string>
-    <string name="status_idle_detail">回到桌面点本图标就会自动开门。长按图标可改按钮文字。</string>
+    <string name="status_idle_detail">回到桌面点本图标就会自动开门。长按图标可改按钮文字和桌面图标。</string>
     <string name="status_connecting">正在连接辅助服务</string>
     <string name="status_connecting_detail">第一次开启无障碍后请稍等片刻</string>
     <string name="kicker_result">开门结果</string>
@@ -38,4 +38,12 @@
     <string name="label_step3">第 3 步 · 智能门锁</string>
     <string name="label_step4">第 4 步 · 开门按钮</string>
     <string name="settings_hint">必须和贝壳页面上的按钮文字完全一致。App 改版后改这里即可，不用重装。</string>
+    <string name="icon_picker_title">桌面图标</string>
+    <string name="icon_picker_hint">点选后桌面图标会换。若没变，回到桌面等几秒，或从应用列表再拖一次。</string>
+    <string name="icon_changed">已更换图标</string>
+    <string name="icon_dark">深色锁</string>
+    <string name="icon_white_green">白底绿锁</string>
+    <string name="icon_white_line">细线锁</string>
+    <string name="icon_white_mint">薄荷锁</string>
+    <string name="icon_green_white">翠绿锁</string>
 </resources>
