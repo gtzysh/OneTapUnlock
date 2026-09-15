@@ -43,7 +43,7 @@ object NodeClicker {
         return false
     }
 
-    // 【点屏幕上半部的文案，用来点「智能门锁」卡片，避开底栏房东】
+    // 【点屏幕上部的文案；租约入口可用更高的 maxY，门锁卡片仍用默认 0.62】
     fun clickTextAbove(
         service: AccessibilityService,
         root: AccessibilityNodeInfo,

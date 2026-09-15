@@ -62,7 +62,7 @@ class UnlockCoordinator(
             waitOpening(screen, now)
             return
         }
-        if (isLockPage(screen)) {
+        if (BeikePages.isLockPage(screen)) {
             phase = Phase.TAP
             tapUnlock(screen, now)
             return
@@ -71,15 +71,20 @@ class UnlockCoordinator(
         val pkg = root.packageName?.toString().orEmpty()
         if (pkg.isNotEmpty() && pkg != BeikePackages.BEIKE) return
         if (now - lastClickAt < NAV_COOLDOWN_MS) return
-        if (isLeaseBottomBar(screen) || isLeaseHub(screen) || hasLockMenu(screen)) {
+        val lease = labels().getOrElse(1) { "租约" }
+        val lock = labels().getOrElse(2) { "智能门锁" }
+        if (BeikePages.isLeaseBottomBar(screen) || BeikePages.isLeaseHub(screen) || BeikePages.hasLockMenu(screen, lock)) {
             leftHome = true
         }
-        when {
-            hasLockMenu(screen) -> clickLockMenu(root, now)
-            isLandlordPage(screen) -> clickBackToLease(root, now)
-            isLeaseHub(screen) || isLeaseBottomBar(screen) -> clickLockMenu(root, now)
-            hasLeaseEntry(screen) -> clickLease(root, now)
-            else -> clickMine(root, screen, now)
+        when (BeikePages.navStep(screen, lease, lock)) {
+            BeikePages.NavStep.TAP_UNLOCK -> {
+                phase = Phase.TAP
+                tapUnlock(screen, now)
+            }
+            BeikePages.NavStep.CLICK_LOCK -> clickLockMenu(root, now)
+            BeikePages.NavStep.BACK_TO_LEASE -> clickBackToLease(root, now)
+            BeikePages.NavStep.CLICK_LEASE -> clickLease(root, screen, now)
+            BeikePages.NavStep.CLICK_MINE -> clickMine(root, screen, now)
         }
     }
 
@@ -87,7 +92,13 @@ class UnlockCoordinator(
 
     private fun clickMine(root: AccessibilityNodeInfo, screen: String, now: Long) {
         // 【「我的」和「房东」都在右下角，见到房东后绝不能再点我的】
-        if (leftHome || isLeaseBottomBar(screen) || isLeaseHub(screen) || isLandlordPage(screen) || hasLockMenu(screen)) {
+        if (leftHome ||
+            BeikePages.isLeaseBottomBar(screen) ||
+            BeikePages.isLeaseHub(screen) ||
+            BeikePages.isLandlordPage(screen) ||
+            BeikePages.hasLockMenu(screen, labels().getOrElse(2) { "智能门锁" }) ||
+            BeikePages.isMineHub(screen)
+        ) {
             return
         }
         lastClickAt = now
@@ -97,12 +108,17 @@ class UnlockCoordinator(
         }
     }
 
-    private fun clickLease(root: AccessibilityNodeInfo, now: Long) {
+    private fun clickLease(root: AccessibilityNodeInfo, screen: String, now: Long) {
         lastClickAt = now
         leftHome = true
         val lease = labels().getOrElse(1) { "租约" }
-        if (NodeClicker.clickTextAbove(service, root, lease, maxYRatio = 0.75f, preferLargest = false)) return
-        NodeClicker.clickTextAbove(service, root, "我的租约", maxYRatio = 0.75f, preferLargest = false)
+        val maxY = BeikePages.LEASE_TEXT_MAX_Y
+        if (NodeClicker.clickTextAbove(service, root, lease, maxYRatio = maxY, preferLargest = false)) return
+        if (NodeClicker.clickTextAbove(service, root, "我的租约", maxYRatio = maxY, preferLargest = false)) return
+        // 【无障碍读不到「租约」时，只在已认出的我的页补点第二格】
+        if (BeikePages.isMineHub(screen)) {
+            NodeClicker.tapPercent(service, BeikePages.MINE_LEASE_TAP_X, BeikePages.MINE_LEASE_TAP_Y)
+        }
     }
 
     private fun clickLockMenu(root: AccessibilityNodeInfo, now: Long) {
@@ -168,49 +184,6 @@ class UnlockCoordinator(
         if (now - openingSince > 800) {
             finish(UnlockOutcome.SUCCESS, "开门中")
         }
-    }
-
-    private fun isHome(screen: String): Boolean {
-        if (isLeaseBottomBar(screen) || isLeaseHub(screen) || isLandlordPage(screen)) return false
-        return screen.contains("二手房") && screen.contains("新房") && screen.contains("首页")
-    }
-
-    // 【租约/房东底栏都有「房东」，主站首页没有】
-    private fun isLeaseBottomBar(screen: String): Boolean {
-        return screen.contains("房东") && screen.contains("租约")
-    }
-
-    private fun isLeaseHub(screen: String): Boolean {
-        return screen.contains("切换租约") ||
-            screen.contains("租后服务") ||
-            (screen.contains("在租中") && screen.contains("租约"))
-    }
-
-    private fun isLandlordPage(screen: String): Boolean {
-        if (screen.contains("智能门锁") || screen.contains("切换租约") || screen.contains("租后服务")) {
-            return false
-        }
-        return screen.contains("一键出租") || screen.contains("我是房东")
-    }
-
-    private fun isLockPage(screen: String): Boolean {
-        return screen.contains("临时密码") ||
-            screen.contains("开门中") ||
-            screen.contains("蓝牙开门")
-    }
-
-    private fun hasLeaseEntry(screen: String): Boolean {
-        val lease = labels().getOrElse(1) { "租约" }
-        return screen.contains(lease) &&
-            !isHome(screen) &&
-            !isLeaseHub(screen) &&
-            !isLeaseBottomBar(screen) &&
-            !isLandlordPage(screen)
-    }
-
-    private fun hasLockMenu(screen: String): Boolean {
-        val lock = labels().getOrElse(2) { "智能门锁" }
-        return screen.contains(lock) && !isLockPage(screen)
     }
 
     private fun finish(outcome: UnlockOutcome, extra: String?) {
